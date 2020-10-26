@@ -1,0 +1,28 @@
+name: Checkmarx SAST Scan on PR
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - master
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get the Organization Name
+      run: echo ::set-env name=ORG_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $1}')
+    - name: Checkout
+      uses: actions/checkout@v2
+    # Scan code with Checkmarx
+    - name: Checkmarx Github Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.0-9.x #Github Action version
+      with:
+        project: GithubActionTest
+        team: /CxServer
+        checkmarx_url: ${{ secrets.CHECKMARX_URL }}
+        checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
+        checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+        break_build: false
+        github_token: ${{ secrets.GH_TOKEN }}
+        params: --checkmarx.incremental=false --namespace=${{ env.ORG_NAME }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.head_ref }} --bug-tracker=GITHUBPULL --merge-id=${{ github.event.number }}
