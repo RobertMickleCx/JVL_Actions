@@ -4,7 +4,7 @@ Trigger for GitLab Automated CxSAST Scan
 
 **The full course content is now available on Github for free:**
 
-Trigger for CxFlow PR
+Trigger for CxFlow PR!
 
 
 https://github.com/CSPF-Founder/JavaSecurityCourse
