@@ -10,6 +10,7 @@ import java.util.Map;
  * InvocationHandler. No exemplo da revista, o fluxo será desviado para a classe
  * SomeInvocationHandler, que contém um código que se deseja alcançar.
  *
+ *
  * -----------------------------------------------------------------------
  * Mais detalhes na 12a edição da H2HC (hackers to hackers) magazine:
  * https://www.h2hc.com.br/revista/
