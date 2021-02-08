@@ -13,7 +13,18 @@ jobs:
       run: echo ::set-env name=ORG_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $1}')
     - name: Checkout
       uses: actions/checkout@v2
-    # Scan code with Checkmarx
+    
+    # Scan code with KICS
+    - name: run kics Scan
+      uses: checkmarx/kics-action@v1.0
+      with:
+          path: 'terraform'
+          output_path: 'results.json'
+	  # Display the results in json format	  
+    - name: display kics results
+      run: | 
+        cat results.json
+    # Scan code with Checkmarx SAST and SCA
     - name: Checkmarx Github Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.0-9.x #Github Action version
       with:
