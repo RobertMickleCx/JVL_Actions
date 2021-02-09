@@ -47,7 +47,7 @@ jobs:
         params: --checkmarx.scan-preset=High and Medium --cxflow.enabled-vulnerability-scanners=sast --cxflow.enabled-vulnerability-scanners=sca --sca.appUrl=https://sca.scacheckmarx.com --sca.apiUrl=https://api.scacheckmarx.com --sca.accessControlUrl=https://platform.checkmarx.net --sca.tenant=${{ secrets.SCA_TENANT }} --sca.username=${{ secrets.SCA_USERNAME }} --sca.password=${{ secrets.SCA_PASSWORD }} --checkmarx.incremental=false --namespace=${{ env.ORG_NAME }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.head_ref }} --merge-id=${{ github.event.number }}
     # Scan code with KICS
     - name: run kics Scan
-    - uses: checkmarx/kics-action@v1.0
+      uses: checkmarx/kics-action@v1.0
       with:
           path: $GITHUB_WORKSPACE
           output_path: 'results.json'  
