@@ -49,7 +49,7 @@ jobs:
     - name: run kics Scan
       uses: checkmarx/kics-action@v1.0
       with:
-          path: ${GITHUB_WORKSPACE}
+          path: ${{ github.workspace }}
           output_path: 'results.json'  
     - name: display kics results
       run: | 
