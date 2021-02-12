@@ -49,8 +49,12 @@ jobs:
     - name: run kics Scan
       uses: checkmarx/kics-action@v1.0
       with:
-          path: '/home/runner/work/JVL_Actions/JVL_Actions'
-          output_path: 'results.json'  
+          path: '.'
+          output_path: 'results.json'
+          verbose: true
     - name: display kics results
       run: | 
         cat results.json
+    - name: Display Counters
+      run: |
+          cat results.json | jq '.severity_counters'
