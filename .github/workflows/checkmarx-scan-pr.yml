@@ -41,7 +41,7 @@ jobs:
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}  # To be stored in GitHub Secrets.
         github_token: ${{secrets.GH_TOKEN}}  # To be stored in GitHub Secrets.
         incremental: false
-        break_build: false
+        break_build: true
         scanners: sast
         bug_tracker: NONE
         params: --checkmarx.scan-preset=High and Medium --cxflow.enabled-vulnerability-scanners=sast --cxflow.enabled-vulnerability-scanners=sca --sca.appUrl=https://sca.scacheckmarx.com --sca.apiUrl=https://api.scacheckmarx.com --sca.accessControlUrl=https://platform.checkmarx.net --sca.tenant=${{ secrets.SCA_TENANT }} --sca.username=${{ secrets.SCA_USERNAME }} --sca.password=${{ secrets.SCA_PASSWORD }} --checkmarx.incremental=false --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.ref }} --merge-id=${{ github.event.number }}
@@ -49,7 +49,7 @@ jobs:
     - name: run kics Scan
       uses: checkmarx/kics-action@v1.0
       with:
-          path: '.'
+          path: 'src/main'
           output_path: 'results.json'
           verbose: true
     - name: display kics results
