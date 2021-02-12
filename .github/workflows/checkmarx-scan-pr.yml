@@ -49,7 +49,7 @@ jobs:
     - name: run kics Scan
       uses: checkmarx/kics-action@v1.0
       with:
-          path: 'src/main'
+          path: '.'
           output_path: 'results.json'
           verbose: true
     - name: display kics results
