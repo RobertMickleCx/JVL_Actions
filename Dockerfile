@@ -9,5 +9,6 @@ RUN mvn clean package ; cp target/*.war /usr/local/tomcat/webapps/
 EXPOSE 23
 EXPOSE 80
 EXPOSE 53
+ARG password="SOOPERSECRET"
 
 CMD ["catalina.sh","run"]
