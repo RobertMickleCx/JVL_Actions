@@ -38,21 +38,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
-      with:
-        project: GithubActionTest
-        team: /CxServer
-        checkmarx_url: ${{ secrets.CHECKMARX_URL }}  # To be stored in GitHub Secrets.
-        checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}  # To be stored in GitHub Secrets.
-        checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}  # To be stored in GitHub Secrets.
-        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}  # To be stored in GitHub Secrets.
-        github_token: ${{secrets.GH_TOKEN}}  # To be stored in GitHub Secrets.
-        incremental: false
-        break_build: true
-        scanners: sast
-        bug_tracker: NONE
-        params: --checkmarx.scan-preset=Checkmarx DefaulPlus --cxflow.enabled-vulnerability-scanners=sast --cxflow.enabled-vulnerability-scanners=sca --sca.appUrl=https://sca.scacheckmarx.com --sca.apiUrl=https://api.scacheckmarx.com --sca.accessControlUrl=https://platform.checkmarx.net --sca.tenant=${{ secrets.SCA_TENANT }} --sca.username=${{ secrets.SCA_USERNAME }} --sca.password=${{ secrets.SCA_PASSWORD }} --checkmarx.incremental=false --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }}  --branch=${{ github.ref }} --merge-id=${{ github.event.number }}
+   
     # Scan code with KICS
     - name: run kics Scan
       uses: checkmarx/kics-action@v1.1
