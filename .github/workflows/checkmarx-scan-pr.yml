@@ -44,7 +44,7 @@ jobs:
      # Scan code with Checkmarx
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
-        with:
+      with:
         project: WillTest # <-- Insert Checkmarx SAST Project Name
         team: /CxServer
         checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
