@@ -54,7 +54,7 @@ jobs:
         break_build: false
         scanners: sast
         bug_tracker: Sarif
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --
     # Upload SARIF report for CodeQL / Security Alerts PRocessing
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
@@ -64,15 +64,15 @@ jobs:
         
         
     # Scan code with KICS
-    - name: run kics Scan
-      uses: checkmarx/kics-action@v1.1
-      with:
-          path: '.'
-          output_path: 'results.json'
-          verbose: true
-    - name: display kics results
-      run: | 
-        cat results.json
-    - name: Display Counters
-      run: |
-          cat results.json | jq '.severity_counters'
+   # - name: run kics Scan
+   #   uses: checkmarx/kics-action@v1.1
+    #  with:
+    #      path: '.'
+    #     output_path: 'results.json'
+    #      verbose: true
+    #- name: display kics results
+    #  run: | 
+    #    cat results.json
+    #- name: Display Counters
+    #  run: |
+    #      cat results.json | jq '.severity_counters'
