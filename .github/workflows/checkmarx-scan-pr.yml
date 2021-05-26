@@ -59,7 +59,7 @@ jobs:
       if: ${{ always() }}
     
       run: |
-          cat results/results.json | jq 
+          cat results/results.json | jq ".scanSummary"
     # Upload SARIF report for CodeQL / Security Alerts PRocessing
    # - name: Upload SARIF file
    #   uses: github/codeql-action/upload-sarif@v1
