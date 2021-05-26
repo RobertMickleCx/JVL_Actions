@@ -68,16 +68,3 @@ jobs:
         
 
         
-    # Scan code with KICS
-   # - name: run kics Scan
-   #   uses: checkmarx/kics-action@v1.1
-    #  with:
-    #      path: '.'
-    #     output_path: 'results.json'
-    #      verbose: true
-    #- name: display kics results
-    #  run: | 
-    #    cat results.json
-    #- name: Display Counters
-    #  run: |
-    #      cat results.json | jq '.severity_counters'
