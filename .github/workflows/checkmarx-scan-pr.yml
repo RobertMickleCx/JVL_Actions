@@ -55,9 +55,10 @@ jobs:
         scanners: sast
        # bug_tracker: Sarif
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filter-severity=medium --cx-flow.break-build=true --cx-flow.thresholds.high=90 --cx-flow.thresholds.medium=91 --cx-flow.bug-tracker-impl=Json --bug-tracker=Json --json.file-name-format="results-[NAMESPACE]-[REPO]-[BRANCH]-[TIME].json" --json.data-folder=""
-      
-        post: |
-           cat results*.json | jq
+    - name: Display Results
+      if: ${{ always() }}
+      run: |
+          cat results.json | jq '.severity_counters' 
     # Upload SARIF report for CodeQL / Security Alerts PRocessing
    # - name: Upload SARIF file
    #   uses: github/codeql-action/upload-sarif@v1
