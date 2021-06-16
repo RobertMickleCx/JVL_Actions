@@ -27,7 +27,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-   
+
     # Scan code with KICS
     - name: run kics Scan
       uses: checkmarx/kics-action@v1.1
@@ -41,5 +41,4 @@ jobs:
     - name: Display Counters
       run: |
           cat results.json | jq '.severity_counters'
-          
 © 2021 GitHub, Inc.
