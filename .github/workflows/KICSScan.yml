@@ -31,11 +31,13 @@ jobs:
 
     # Scan code with KICS
     - name: run kics Scan
-      uses: checkmarx/kics-action@v1.1
+      uses: checkmarx/kics-action@v1.2
       with:
-          path: '.'
-          output_path: 'results.json'
-          verbose: true
+        # scanning two directories: ./terraform/ ./cfn-templates/ plus a single file
+        path: '.'
+        output_path: 'results.json'
+        verbose: true
+
     - name: display kics results
       run: | 
         cat results.json
