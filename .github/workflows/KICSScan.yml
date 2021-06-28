@@ -37,6 +37,7 @@ jobs:
         path: '.'
         output_path: 'results.json'
         verbose: true
+        ignore_on_exit: results
 
     - name: display kics results
       run: | 
