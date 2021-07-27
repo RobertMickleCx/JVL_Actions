@@ -42,7 +42,9 @@ public class LoginValidator extends HttpServlet {
        
        String user=request.getParameter("username").trim();
           String pass=request.getParameter("password").trim();
+
           String password = "12346789010123456"
+
            try
              {
                  Connection con=new DBConnect().connect(getServletContext().getRealPath("/WEB-INF/config.properties"));
