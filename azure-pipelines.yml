@@ -24,3 +24,4 @@ steps:
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
     additionalParams: '--filter-file ''!src/main'''
+    additionalParams: '--debug'
