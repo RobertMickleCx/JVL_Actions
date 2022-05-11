@@ -23,4 +23,4 @@ steps:
     projectName: '$(Build.Repository.Name)'
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
-    additionalParams: '--file-filter !src/main'
+    additionalParams: '--project-group "Checkmarx SE" --file-filter !src/main'
