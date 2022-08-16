@@ -24,3 +24,5 @@ steps:
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
     additionalParams: '--report-format summaryHTML'
+- publish: $(System.DefaultWorkingDirectory)/cx_result.html
+  artifact: CxResults
