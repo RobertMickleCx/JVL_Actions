@@ -1,0 +1,30 @@
+#
+# Example job using the CLI image to run a CxAST scan
+#
+# Configuration through environment variables in CircleCI
+#
+# Documentation:
+# https://checkmarx.com/resource/documents/en/34965-68721-checkmarx-one-circleci-integration.html
+#
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: checkmarx/ast-cli
+    steps:
+      - checkout
+      - run:
+          name: "Run Scan"
+          command: |
+            /app/bin/cx \
+            scan create \
+            -s . \
+            --agent CircleCI \
+            --project-name $CIRCLE_PROJECT_REPONAME \
+            --branch $CIRCLE_BRANCH \
+            --base-uri $CX_BASE_URI \
+            --tenant $CX_TENANT \
+            --client-id $CX_CLIENT_ID \
+            --client-secret $CX_CLIENT_SECRET \
+            $ADDITIONAL_PARAMS
