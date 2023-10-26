@@ -24,4 +24,4 @@ steps:
     projectName: '$(Build.Repository.Name)'
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
-    #additionalParams: '--sast-filter !**/**,src/main/webapp/**'
+    additionalParams: '--debug -s ./src --file-filter !*.sql,!*.xml,!*.json,!./.git'
