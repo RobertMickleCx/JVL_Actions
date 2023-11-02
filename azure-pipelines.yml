@@ -22,6 +22,7 @@ steps:
 
 - script:
     #du -h;
-    ls -lh /home/vsts/work/_temp/ ;
-    cat /home/vsts/work/_temp/CxLog* ;
+    #ls -lh /home/vsts/work/_temp/ ;
+    #cat /home/vsts/work/_temp/CxLog* ;
+    grep -o 'https:\/\/us.ast.checkmarx.net\/projects\/\S*' /home/vsts/work/_temp/CxLog* ;
   displayName: 'Run a multi-line script'
