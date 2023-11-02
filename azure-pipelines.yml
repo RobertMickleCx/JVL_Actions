@@ -21,6 +21,7 @@ steps:
     additionalParams: '--scan-types iac-security'
 
 - script:
-    du -h;
-    ls -lh /home/vsts/work/_temp/
+    #du -h;
+    ls -lh /home/vsts/work/_temp/ ;
+    cat CxLog*
   displayName: 'Run a multi-line script'
