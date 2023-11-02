@@ -14,14 +14,14 @@ steps:
 - script: du -h
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 - task: Checkmarx AST@2
   inputs:
     CheckmarxService: 'ASTconnection'
     projectName: '$(Build.Repository.Name)'
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
-    additionalParams: '--debug --file-filter !*.ts,!*.js,!*.sql,!*.xml,!*.json,!AbsenceManagementEntitlement,!BI,!BJE,!BackgroundJobTests,!Build,!BuildProcessTemplates,!CandidatePortal,!CareerProfile,!CentralizedSchedules,!Common,!Compensation,!DB,!DBUpgrade,!DFAcceptanceTest,!DFLoadTest,!DFMtmTest,!DFPerformanceTest,!DataSvc,!Dayforce,!DayforceHCMLDAPConnector,!DayforceHCMOutlookIntegration,!DbUpgradeConsumers,!Dependencies,!Devices,!Engagement,!Engines,!EntityGenerator,!GovTalk,!HR,!HRAPIGeneratorConsole,!HRAPIGeneratorConsole2023,!HRAPIGeneratorUI,!HRAPIGenerators,!HcmAnywhere,!LSLSolution,!LegacyFrontEnd,!Main,!Mobile,!Onboarding,!Performance,!PlatformJsLibRootMap,!ProjectTemplates,!Recruiting,!RemoteExecution,!RuleEngine,!Samples,!ServerJobs,!ServiceDelivery,!Services,!SmartTracingDemo,!SoftClock,!SoftClockWithIS,!SystemPerformance,!TSMain,!TeamProjectConfig,!Test,!ThirdPartyJsLibRootMap,!Tools,!UI,!UnifiedResources,!UtilitySuite,!WFM,!WFMCore,!WbDb,!WebClockBioLumidigmSetup,!WebTestPlugins,!WorkflowTests,!azure,!default,!swaggerUI --sast-filter !**/**,src/** --iac-security-filter !**/**,src/**'
+    additionalParams: '--scan-types iac-security'
+
+- script:
+    du -h
+  displayName: 'Run a multi-line script'
