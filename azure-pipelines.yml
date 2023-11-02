@@ -21,6 +21,6 @@ steps:
     additionalParams: '--scan-types iac-security'
 
 - script:
-    du -h
+    du -h;
     ls -lh /home/vsts/work/_temp/
   displayName: 'Run a multi-line script'
