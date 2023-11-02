@@ -11,8 +11,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: du -h
-  displayName: 'Run a one-line script'
 
 - task: Checkmarx AST@2
   inputs:
@@ -24,4 +22,5 @@ steps:
 
 - script:
     du -h
+    ls -lh /home/vsts/work/_temp/
   displayName: 'Run a multi-line script'
