@@ -23,5 +23,5 @@ steps:
 - script:
     #du -h;
     ls -lh /home/vsts/work/_temp/ ;
-    cat CxLog*
+    cat /home/vsts/work/_temp/CxLog* ;
   displayName: 'Run a multi-line script'
