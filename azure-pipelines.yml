@@ -20,7 +20,7 @@ steps:
     tenantName: 'dp_wp_na'
     #additionalParams: '--scan-types iac-security'
 
-- #script:
+#- script:
     #du -h;
     #ls -lh /home/vsts/work/_temp/ ;
     #cat /home/vsts/work/_temp/CxLog* ;
