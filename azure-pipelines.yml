@@ -19,7 +19,8 @@ steps:
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
     #additionalParams: '--scan-types iac-security'
-
+    #Test comment
+    
 #- script:
     #du -h;
     #ls -lh /home/vsts/work/_temp/ ;
