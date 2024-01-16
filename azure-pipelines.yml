@@ -18,12 +18,12 @@ steps:
     projectName: '$(Build.Repository.Name)'
     branchName: '$(Build.SourceBranchName)'
     tenantName: 'dp_wp_na'
-    additionalParams: '--scan-types iac-security'
+    #additionalParams: '--scan-types iac-security'
 
-- script:
+- #script:
     #du -h;
     #ls -lh /home/vsts/work/_temp/ ;
     #cat /home/vsts/work/_temp/CxLog* ;
-    FOO = grep -o "https.*" /home/vsts/work/_temp/CxLog* ;
-    echo "##vso[task.setvariable variable=FOO]$FOO"
-  displayName: 'Run a multi-line script'
+    #FOO = grep -o "https.*" /home/vsts/work/_temp/CxLog* ;
+    #echo "##vso[task.setvariable variable=FOO]$FOO"
+ # displayName: 'Run a multi-line script'
