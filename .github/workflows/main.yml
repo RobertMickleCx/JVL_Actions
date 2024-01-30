@@ -1,44 +1,34 @@
-# Documentation:
-# https://checkmarx.atlassian.net/wiki/spaces/Checkmarx One/pages/6147408761/CI+CD+with+CxSCA+Resolver
-#
 
-name: SCA Resolver Example
-
+name: Checkmarx One Scan
 on:
   push:
     branches:
-      [master]
-  workflow_dispatch:
-
+      - main
+      - master
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-
       - name: Download SCA Resolver
         run: |
           wget https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz
           tar -xzvf ScaResolver-linux64.tar.gz
           rm -rf ScaResolver-linux64.tar.gz
-
-      - name: Install Maven, NPM, ... # Add any necessary package management
-        run: |
-          sudo apt install maven npm
-
-      - name: Run Checkmarx One CLI Scan
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          /home/linuxbrew/.linuxbrew/bin/brew install checkmarx/ast-cli/ast-cli
-          /home/linuxbrew/.linuxbrew/Cellar/ast-cli/*/bin/cx \
-            scan create \
-            -s . \
-            --agent GitHub \
-            --project-name ${{ github.repository }} \
-            --branch ${GITHUB_REF##*/} \
-            --base-uri ${{ secrets.CX_BASE_URI }} \
-            --tenant ${{ secrets.CX_TENANT }} \
-            --client-id ${{ secrets.CX_CLIENT_ID }} \
-            --client-secret ${{ secrets.CX_CLIENT_SECRET }} \
-            --sca-resolver ./ScaResolver
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: ${{ github.repository }}
+          cx_tenant: ${{ secrets.CX_TENANT }}
+          base_uri: ${{ secrets.CX_BASE_URI }}
+          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CX_SECRET }}
+          #additional_params: --threshold "sast-medium=20; sast-high=10; sca-high=10"
+          additional_params: --sca-resolver ./ScaResolver --sca-resolver-params "-h"
+#      - name: Upload SARIF file
+ #       uses: github/codeql-action/upload-sarif@v2
+  #      with:
+          # Path to SARIF file relative to the root of the repository
+   #       sarif_file: cx_result.sarif
