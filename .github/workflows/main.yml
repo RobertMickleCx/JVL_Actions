@@ -18,6 +18,10 @@ jobs:
         run: tar -xzvf ScaResolver-linux64.tar.gz
       - name: Clean Up
         run: rm -rf ScaResolver-linux64.tar.gz
+      - name: PWD
+        run: pwd
+      - name: PWD2
+        run: echo "$PWD"
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
