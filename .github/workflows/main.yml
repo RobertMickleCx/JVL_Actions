@@ -7,7 +7,7 @@ name: SCA Resolver Example
 on:
   push:
     branches:
-      [main]
+      [master]
   workflow_dispatch:
 
 jobs:
