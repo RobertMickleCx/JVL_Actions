@@ -41,4 +41,4 @@ jobs:
             --tenant ${{ secrets.CX_TENANT }} \
             --client-id ${{ secrets.CX_CLIENT_ID }} \
             --client-secret ${{ secrets.CX_SECRET }} \
-            --sca-resolver ./ScaResolver
+            --sca-resolver ./ScaResolver --sca-resolver-params "--scan-containers --images WebGoat/WebGoat"
