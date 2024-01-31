@@ -24,6 +24,8 @@ jobs:
         run: ls -l
       - name: Path
         run: echo $PATH
+      - name: Set Path
+        run: export PATH=$PATH:$(pwd)
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
