@@ -25,7 +25,7 @@ jobs:
       - name: Path
         run: echo $PATH
       - name: Set Path
-        run: cp ./ScaResolver /app/bin/
+        run: cp ./ScaResolver /app/bin/ScaResolver
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
