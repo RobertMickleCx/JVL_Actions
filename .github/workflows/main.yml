@@ -18,7 +18,7 @@ jobs:
       - name: Clean Up
         run: rm -rf ScaResolver-linux64.tar.gz
       - name: Permissions
-        run: apt-get update && apt-get install -y --no-install-recommends gcc ca-certificates
+        run: chmod +x ScaResolver
       - name: PWD
         run: pwd
       - name: List
