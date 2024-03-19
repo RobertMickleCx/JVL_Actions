@@ -11,20 +11,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Download SCA Resolver
-        run: wget https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz
-      - name: Extract
-        run: tar -xzvf ScaResolver-linux64.tar.gz
-      - name: Clean Up
-        run: rm -rf ScaResolver-linux64.tar.gz
-      - name: Permissions
-        run: chmod +x ScaResolver
-      - name: PWD
-        run: pwd
-      - name: List
-        run: ls -l
-      - name: Path
-        run: echo $PATH
+      #- name: Download SCA Resolver
+       # run: wget https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz
+      #- name: Extract
+       # run: tar -xzvf ScaResolver-linux64.tar.gz
+      #- name: Clean Up
+       # run: rm -rf ScaResolver-linux64.tar.gz
+      #- name: Permissions
+       # run: chmod +x ScaResolver
+      #- name: PWD
+       # run: pwd
+      #- name: List
+       # run: ls -l
+      #- name: Path
+       # run: echo $PATH
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
@@ -33,4 +33,4 @@ jobs:
           base_uri: ${{ secrets.CX_BASE_URI }}
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_SECRET }}
-          additional_params: --sca-resolver ./ScaResolver --sca-resolver-params "--scan-container true --images WebGoat/WebGoat"
+          #additional_params: --sca-resolver ./ScaResolver --sca-resolver-params "--scan-container true --images WebGoat/WebGoat"
